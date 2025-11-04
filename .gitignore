@@ -60,10 +60,9 @@ hypothesis/
 Thumbs.db
 
 # Dataset and model artifacts
-*.csv
 *.pkl
 *.h5
 catboost_info/
-
+Disease_and_symptoms_dataset.csv
 # Logs
 *.log
