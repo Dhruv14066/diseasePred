@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-
+import os
+import requests
 # -------------------------------------------------
 # 0️⃣ Streamlit Page Config
 # -------------------------------------------------
@@ -11,10 +12,23 @@ st.set_page_config(page_title="CURE-BOT | AI Disease Predictor", page_icon="🩺
 # -------------------------------------------------
 # 1️⃣ Load Model and Metadata
 # -------------------------------------------------
-@st.cache_resource
+
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1-YAyGCBT1q8W7wgieA_k7XB8NcUXlQgT"
+MODEL_PATH = "disease_prediction_catboost_hybrid.pkl"
+
 def load_model():
-    with open("disease_prediction_catboost_hybrid.pkl", "rb") as f:
+    # If not already downloaded, fetch from Google Drive
+    if not os.path.exists(MODEL_PATH):
+        with st.spinner("⬇️ Downloading model... please wait"):
+            r = requests.get(MODEL_URL)
+            with open(MODEL_PATH, "wb") as f:
+                f.write(r.content)
+            st.success("Model downloaded successfully!")
+
+    # Load the pickle data
+    with open(MODEL_PATH, "rb") as f:
         data = pickle.load(f)
+
     return data["model"], data["label_encoder"], data["symptoms"], data["accuracy"]
 
 model, label_encoder, symptoms, accuracy = load_model()

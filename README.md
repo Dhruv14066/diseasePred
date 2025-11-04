@@ -3,6 +3,7 @@
 This repository contains a disease prediction project built with CatBoost and supporting scripts.
 
 Contents:
+
 - `app.py`, `api_server.py` - application entry points
 - Dataset files (CSV) and trained model artifacts
 - `requirements.txt` - Python dependencies
@@ -23,6 +24,7 @@ Quick start (local):
    ```
 
 Prepare for pushing to GitHub
+
 1. I've created a `.gitignore` and committed project files locally. To push to GitHub you have two options:
 
 - Option A (recommended, interactive): Use the GitHub website to create a new repository, then run the commands shown below (replace `USERNAME` and `REPO`):
@@ -38,5 +40,6 @@ Prepare for pushing to GitHub
   - a remote repository URL that I can push to (for example an existing empty repo).
 
 What's next
+
 - If you want, I can create the remote repo for you (requires a PAT) and push the current code.
 - I can also add CI (GitHub Actions) for tests and deployment if you'd like.
