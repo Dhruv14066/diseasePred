@@ -7,7 +7,7 @@ import requests
 # -------------------------------------------------
 # 0️⃣ Streamlit Page Config
 # -------------------------------------------------
-st.set_page_config(page_title="CURE-BOT | AI Disease Predictor", page_icon="🩺", layout="wide")
+st.set_page_config(page_title="Caresentry | AI Disease Predictor", page_icon="🩺", layout="wide")
 
 # -------------------------------------------------
 # 1️⃣ Load Model and Metadata
@@ -185,8 +185,7 @@ disease_info = load_disease_info()
 # -------------------------------------------------
 # 3️⃣ Streamlit UI
 # -------------------------------------------------
-st.title("🤖 CURE-BOT: AI Disease Predictor")
-st.write(f"**Model Accuracy:** {accuracy*100:.2f}%")
+st.title("CareSentryAI Disease Predictor")
 st.markdown("---")
 
 st.header("🧬 Select Your Symptoms")
@@ -240,11 +239,9 @@ if st.button("🔍 Predict Disease"):
         df_results = pd.DataFrame(results_table, columns=["Disease", "Probability (%)", "Specialist", "Severity"])
         st.dataframe(df_results, use_container_width=True)
 
-        st.markdown("### 📊 Probability Comparison")
-        st.bar_chart(df_results.set_index("Disease")["Probability (%)"])
+        # st.markdown("### 📊 Probability Comparison")
+        # st.bar_chart(df_results.set_index("Disease")["Probability (%)"])
 
-        st.markdown("---")
-        st.info("⚕️ This prediction is for educational use only. Always consult a doctor for medical advice.")
 
 # -------------------------------------------------
 # 5️⃣ Footer
@@ -253,7 +250,6 @@ st.markdown(
     """
     <hr>
     <div style='text-align:center; color:grey; font-size:13px;'>
-    © 2025 Cure-Bot | Built with ❤️ using Streamlit & CatBoost
     </div>
     """,
     unsafe_allow_html=True
